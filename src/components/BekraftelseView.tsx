@@ -4,12 +4,7 @@ interface Props {
   data: BekraftelseData;
 }
 
-interface DetailRowProps {
-  label: string;
-  value: string;
-}
-
-function DetailRow({ label, value }: DetailRowProps) {
+function DetailRow({ label, value }: { label: string; value: string }) {
   return (
     <div className="flex gap-3 py-2 border-b border-gray-100 last:border-0">
       <dt className="w-44 shrink-0 text-xs font-semibold text-gray-500 uppercase tracking-wide pt-0.5">{label}</dt>
@@ -21,7 +16,6 @@ function DetailRow({ label, value }: DetailRowProps) {
 export default function BekraftelseView({ data }: Props) {
   return (
     <div>
-      {/* Success header */}
       <div className="rounded-xl bg-green-50 border border-green-200 p-6 text-center mb-6">
         <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-green-100 border-2 border-green-300">
           <svg className="h-8 w-8 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -34,7 +28,6 @@ export default function BekraftelseView({ data }: Props) {
         </p>
       </div>
 
-      {/* Reklamations-ID highlight */}
       <div className="rounded-xl border-2 border-blue-200 bg-blue-50 p-5 mb-6">
         <div className="flex items-center justify-between flex-wrap gap-3">
           <div>
@@ -54,7 +47,6 @@ export default function BekraftelseView({ data }: Props) {
         </p>
       </div>
 
-      {/* Details */}
       <div className="section-card">
         <div className="section-header">
           <h2 className="text-base font-bold text-gray-900">Ärendeöversikt</h2>

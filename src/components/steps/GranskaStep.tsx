@@ -15,17 +15,24 @@ interface Props {
   onEditStep: (step: number) => void;
 }
 
-interface SummaryRowProps {
-  label: string;
-  value: string;
-}
-
-function SummaryRow({ label, value }: SummaryRowProps) {
+function SummaryRow({ label, value }: { label: string; value: string }) {
   return (
     <div className="flex gap-3 py-2 border-b border-gray-100 last:border-0">
       <dt className="w-44 shrink-0 text-xs font-semibold text-gray-500 uppercase tracking-wide pt-0.5">{label}</dt>
       <dd className="text-sm text-gray-900 flex-1">{value || '—'}</dd>
     </div>
+  );
+}
+
+function EditButton({ onClick }: { onClick: () => void }) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className="text-xs text-blue-600 hover:text-blue-800 font-medium hover:underline"
+    >
+      Redigera
+    </button>
   );
 }
 
@@ -56,13 +63,7 @@ export default function GranskaStep({ formData, isSubmitting, onBack, onSubmit, 
             <div>
               <div className="flex items-center justify-between mb-2">
                 <h3 className="text-sm font-bold text-gray-700 uppercase tracking-wide">Kunduppgifter</h3>
-                <button
-                  type="button"
-                  onClick={() => onEditStep(1)}
-                  className="text-xs text-blue-600 hover:text-blue-800 font-medium hover:underline"
-                >
-                  Redigera
-                </button>
+                <EditButton onClick={() => onEditStep(1)} />
               </div>
               <dl className="rounded-lg border border-gray-200 bg-gray-50 px-4 py-1">
                 <SummaryRow label="Kundnummer" value={kunduppgifter.kundnummer} />
@@ -78,13 +79,7 @@ export default function GranskaStep({ formData, isSubmitting, onBack, onSubmit, 
                 <h3 className="text-sm font-bold text-gray-700 uppercase tracking-wide">
                   Reklamationsuppgifter ({reklamationsrader.length} {reklamationsrader.length === 1 ? 'rad' : 'rader'})
                 </h3>
-                <button
-                  type="button"
-                  onClick={() => onEditStep(2)}
-                  className="text-xs text-blue-600 hover:text-blue-800 font-medium hover:underline"
-                >
-                  Redigera
-                </button>
+                <EditButton onClick={() => onEditStep(2)} />
               </div>
               <div className="space-y-3">
                 {reklamationsrader.map((rad, i) => (
@@ -114,13 +109,7 @@ export default function GranskaStep({ formData, isSubmitting, onBack, onSubmit, 
                 <h3 className="text-sm font-bold text-gray-700 uppercase tracking-wide">
                   Bilagor ({bilagor.length} {bilagor.length === 1 ? 'fil' : 'filer'})
                 </h3>
-                <button
-                  type="button"
-                  onClick={() => onEditStep(3)}
-                  className="text-xs text-blue-600 hover:text-blue-800 font-medium hover:underline"
-                >
-                  Redigera
-                </button>
+                <EditButton onClick={() => onEditStep(3)} />
               </div>
               {bilagor.length > 0 ? (
                 <ul className="rounded-lg border border-gray-200 bg-gray-50 divide-y divide-gray-100">
