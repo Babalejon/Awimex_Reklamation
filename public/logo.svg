@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <circle cx="50" cy="50" r="50" fill="#000"/>
+  <path fill="white" fill-rule="evenodd" d="
+    M 10 88 L 44 12 L 56 12 L 90 88 L 75 88 L 63 60 L 37 60 L 25 88 Z
+    M 46 19 L 54 19 L 62 53 L 38 53 Z
+  "/>
+</svg>
